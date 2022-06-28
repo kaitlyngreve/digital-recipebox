@@ -1,6 +1,4 @@
 class RecipesController < ApplicationController
-    rescue_from ActiveRecord::RecordInvalid, with: :render_invalid_response
-    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def index
         recipes = Recipe.all
@@ -8,7 +6,7 @@ class RecipesController < ApplicationController
     end
 
     def show
-        recipe = Recipe.find_by!(id: params[:id])
+        recipe = find_recipe
         render json: recipe, status: :ok
     end
 
@@ -17,8 +15,14 @@ class RecipesController < ApplicationController
         render json: recipe, status: :created
     end
 
+    def update
+        recipe = find_recipe
+        recipe.update!(recipe_params)
+        render json: recipe, status: :ok
+    end
+
     def destroy
-        recipe = Recipe.find_by!(recipe_params)
+        recipe = find_recipe
         recipe.destroy!
         head :no_content
     end
@@ -29,8 +33,8 @@ class RecipesController < ApplicationController
         params.permit(:title, :description, :measurements_ingredients, :directions, :img_url, :cuisine_id, :user_id)
     end
 
-    def render_invalid_response(exception)
-        render json: { errors: exception.record.errors.full_messages }, status: :unprocessable_entity
+    def find_recipe
+        Recipe.find_by!(id: params[:id])
     end
 
     def render_not_found_response

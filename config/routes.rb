@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :cuisines
+  resources :cuisines, only: [:index, :show, :create]
   resources :recipes
-  resources :users
+  resources :users, only: [:index, :show, :create, :destroy]
 
     get '/hello', to: 'application#hello_world'
 
