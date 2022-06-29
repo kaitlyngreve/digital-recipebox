@@ -16,12 +16,12 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <Header />
         <Switch>
-          <Route path="/testing">
+          <Route path="/recipes">
             <h1>Test Route</h1>
           </Route>
           <Route path="/homepage">
-            <Header />
             <Recipe recipes={recipes} />
           </Route>
         </Switch>

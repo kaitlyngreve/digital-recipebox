@@ -23,7 +23,7 @@ Recipe.create(
     directions: "Set a pan to low heat and melt the butter. Place one piece of bread in the pan, layer with cheese, and place second piece of bread on top. 
     Cover pan with lid. Watch closely until cheese has melted, then remove lid and increase heat. Flip sandwich to avoid burning on one side.
     As soon as both sides are golden brown, remove from pan. Enjoy!",
-    img_url: "images/grilled_cheese.jpg",
+    img_url: "https://images.unsplash.com/photo-1634598604019-7fca68ad3b8e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1635&q=80",
     cuisine_id: c1.id,
     user_id: Faker::Number.within(range: 1..15)
 )
