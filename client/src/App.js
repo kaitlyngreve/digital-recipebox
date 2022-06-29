@@ -1,15 +1,16 @@
-import logo from './logo.svg';
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import './App.css';
+import Recipe from './Recipe';
+import Header from './Header'
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    fetch("/hello")
+    fetch("/recipes")
       .then((r) => r.json())
-      .then((data) => setCount(data.count));
+      .then((data) => setRecipes(data));
   }, []);
 
   return (
@@ -19,8 +20,9 @@ function App() {
           <Route path="/testing">
             <h1>Test Route</h1>
           </Route>
-          <Route path="/">
-            <h1>Page Count: {count}</h1>
+          <Route path="/homepage">
+            <Header />
+            <Recipe recipes={recipes} />
           </Route>
         </Switch>
       </div>
