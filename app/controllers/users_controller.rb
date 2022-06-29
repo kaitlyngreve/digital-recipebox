@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    skip_before_action :authorize, only: :create
 
     def index
         users = User.all 
@@ -6,12 +7,12 @@ class UsersController < ApplicationController
     end
 
     def show
-        user = User.find_by!(id: params[:id])
-        render json: user, status: :ok
+        render json: @current_user
     end
 
     def create
         user = User.create!(user_params)
+        session[:user_id] = user.id
         render json: user, status: :created
     end
 
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :password, :bio)
+        params.permit(:username, :password, :bio, :password_digest)
     end
 
     def render_not_found_response

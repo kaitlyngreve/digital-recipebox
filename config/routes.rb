@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   resources :cuisines, only: [:index, :show, :create]
   resources :recipes
-  resources :users, only: [:index, :show, :create, :destroy]
+  # resources :users, only: [:index, :create, :destroy]
+
+  post '/signup', to: 'users#create'
+  get '/me', to: 'users#show'
+  get '/users', to: 'users#index'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 
     get '/hello', to: 'application#hello_world'
 
