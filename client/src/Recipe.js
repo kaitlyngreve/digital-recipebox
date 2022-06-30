@@ -4,7 +4,7 @@ function Recipe({ recipes }) {
 
     return (
         <div className="recipe-cards-container">
-            {recipes.map(recipe => <RecipeCard recipe={recipe} key={recipe.id} />)}
+            {recipes.slice(0, 5).map(recipe => <RecipeCard recipe={recipe} key={recipe.id} />)}
         </div>
     )
 }

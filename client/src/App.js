@@ -45,8 +45,8 @@ function App() {
           <Route exact path="/signup">
             <Signup />
           </Route>
-          <Route path="/recipes">
-            <UserRecipe />
+          <Route path="/myrecipes">
+            <UserRecipe recipes={recipes} user={user} />
           </Route>
           <Route path="/homepage">
             <Recipe recipes={recipes} />

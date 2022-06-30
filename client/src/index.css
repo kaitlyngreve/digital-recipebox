@@ -34,3 +34,7 @@ code {
 .like-button:hover {
   cursor: pointer;
 }
+
+.plus-sign:hover {
+  cursor: pointer;
+}
