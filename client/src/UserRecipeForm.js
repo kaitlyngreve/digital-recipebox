@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function UserRecipeForm() {
+function UserRecipeForm({ handleNewUserRecipe, user }) {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [measurementsIngredients, setMeasurementsIngredients] = useState("")
@@ -8,6 +8,7 @@ function UserRecipeForm() {
     const [imgUrl, setImgUrl] = useState("")
     const [username, setUsername] = useState("")
     const [cuisine, setCuisine] = useState("")
+
 
     const [isFormClicked, setIsFormClicked] = useState(false)
 
@@ -35,7 +36,7 @@ function UserRecipeForm() {
             })
         })
             .then(r => r.json())
-            .then(data => console.log(data))
+            .then(data => handleNewUserRecipe(data))
 
         setTitle("")
         setDescription("")
@@ -107,7 +108,7 @@ function UserRecipeForm() {
                         <input
                             className="form-inputs"
                             type="text"
-                            placeholder='Food Image'
+                            placeholder='...'
                             value={username}
                             onChange={e => setUsername(e.target.value)}>
                         </input>
@@ -117,7 +118,7 @@ function UserRecipeForm() {
                         <input
                             className="form-inputs"
                             type="text"
-                            placeholder='Food Image'
+                            placeholder='...'
                             value={cuisine}
                             onChange={e => setCuisine(e.target.value)}>
                         </input>

@@ -6,17 +6,27 @@ import Header from './Header'
 import Login from './Login'
 import Signup from './Signup';
 import UserRecipe from './UserRecipe';
+import UserRecipeDetail from './UserRecipeDetail'
 
 function App() {
   const [recipes, setRecipes] = useState([]);
+  const [cuisines, setCuisines] = useState([])
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
+
 
   useEffect(() => {
     fetch("/recipes")
       .then((r) => r.json())
       .then((data) => setRecipes(data));
   }, []);
+
+  useEffect(() => {
+    fetch("/cuisines")
+      .then((r) => r.json())
+      .then((data) => setCuisines(data));
+  }, []);
+
 
   useEffect(() => {
     fetch('/me')
@@ -34,6 +44,10 @@ function App() {
       .then(setRecipes);
   }, []);
 
+  const handleNewUserRecipe = (data) => {
+    setRecipes([...recipes, data])
+  }
+
 
   if (!isAuthenticated) return <Login error={'please log in'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
 
@@ -46,10 +60,13 @@ function App() {
             <Signup />
           </Route>
           <Route path="/myrecipes">
-            <UserRecipe recipes={recipes} user={user} />
+            <UserRecipe recipes={recipes} user={user} handleNewUserRecipe={handleNewUserRecipe} />
           </Route>
           <Route path="/homepage">
             <Recipe recipes={recipes} />
+          </Route>
+          <Route path="/recipes/:id">
+            <UserRecipeDetail cuisines={cuisines} recipes={recipes} />
           </Route>
           <Route path="/">
             <Login />

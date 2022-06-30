@@ -1,16 +1,15 @@
 import UserRecipeForm from "./UserRecipeForm";
 import UserRecipeCard from "./UserRecipeCard";
+import { useState } from 'react'
 
-function UserRecipes({ recipes, user }) {
+function UserRecipes({ recipes, user, handleNewUserRecipe }) {
 
-    // console.log(recipes)
-    // console.log(user)
+
     const userRecipes = recipes.filter(recipe => recipe.user_id === user.id)
-    console.log(userRecipes)
 
     return (
         <div>
-            <UserRecipeForm />
+            <UserRecipeForm handleNewUserRecipe={handleNewUserRecipe} />
             {userRecipes.map(userRecipe => <UserRecipeCard userRecipe={userRecipe} key={userRecipe.id} />)}
         </div>
     )
