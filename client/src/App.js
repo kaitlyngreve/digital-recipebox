@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
 import './App.css';
 import Recipe from './Recipe';
 import Header from './Header'
@@ -48,6 +48,13 @@ function App() {
     setRecipes([...recipes, data])
   }
 
+  const handleDeleteUserRecipe = (resp) => {
+    console.log(resp)
+    let filteredResp = recipes.filter(userRecipe => userRecipe.id !== resp.id)
+    setRecipes(filteredResp)
+  }
+
+  const userRecipes = recipes.filter(recipe => recipe.user_id === user.id)
 
   if (!isAuthenticated) return <Login error={'please log in'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
 
@@ -60,13 +67,13 @@ function App() {
             <Signup />
           </Route>
           <Route path="/myrecipes">
-            <UserRecipe recipes={recipes} user={user} handleNewUserRecipe={handleNewUserRecipe} />
+            <UserRecipe userRecipes={userRecipes} handleDeleteUserRecipe={handleDeleteUserRecipe} recipes={recipes} user={user} handleNewUserRecipe={handleNewUserRecipe} />
           </Route>
           <Route path="/homepage">
             <Recipe recipes={recipes} />
           </Route>
           <Route path="/recipes/:id">
-            <UserRecipeDetail cuisines={cuisines} recipes={recipes} />
+            <UserRecipeDetail userRecipes={userRecipes} cuisines={cuisines} recipes={recipes} />
           </Route>
           <Route path="/">
             <Login />

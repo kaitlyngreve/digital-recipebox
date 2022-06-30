@@ -8,6 +8,10 @@ function Login({ setUser, setIsAuthenticated }) {
 
     const history = useHistory()
 
+    // const handleUpdateUser = (user) => {
+    //     setUser((previousUser) => ({ ...previousUser, user }))
+    // }
+
     function handleSubmit(e) {
         e.preventDefault();
         const user = {
@@ -23,7 +27,7 @@ function Login({ setUser, setIsAuthenticated }) {
             body: JSON.stringify(user),
         })
             .then(res => {
-                if (res.ok) {
+                if (res) {
                     res.json()
                         .then(user => {
                             setUser(user)
