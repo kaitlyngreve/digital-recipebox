@@ -5,6 +5,7 @@ import Recipe from './Recipe';
 import Header from './Header'
 import Login from './Login'
 import Signup from './Signup';
+import UserRecipe from './UserRecipe';
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -45,7 +46,7 @@ function App() {
             <Signup />
           </Route>
           <Route path="/recipes">
-            <h1>Test Route</h1>
+            <UserRecipe />
           </Route>
           <Route path="/homepage">
             <Recipe recipes={recipes} />
