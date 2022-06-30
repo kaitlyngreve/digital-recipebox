@@ -1,10 +1,10 @@
 import UserRecipeForm from "./UserRecipeForm";
 
-function UserRecipes({ recipes }) {
+function UserRecipes() {
 
     return (
         <div>
-            <UserRecipeForm recipes={recipes} />
+            <UserRecipeForm />
         </div>
     )
 }

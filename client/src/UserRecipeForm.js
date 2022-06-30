@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function UserRecipeForm({ recipes }) {
+function UserRecipeForm() {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [measurementsIngredients, setMeasurementsIngredients] = useState("")

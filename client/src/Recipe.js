@@ -3,8 +3,8 @@ import RecipeCard from "./RecipeCard";
 function Recipe({ recipes }) {
 
     return (
-        <div>
-            {recipes.map(recipe => <RecipeCard recipe={recipe} />)}
+        <div className="recipe-cards-container">
+            {recipes.map(recipe => <RecipeCard recipe={recipe} key={recipe.id} />)}
         </div>
     )
 }

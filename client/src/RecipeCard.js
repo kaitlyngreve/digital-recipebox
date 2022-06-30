@@ -1,13 +1,19 @@
-
+import { useState } from 'react'
 
 
 function RecipeCard({ recipe }) {
+    const [isLiked, setIsLiked] = useState(false)
+
+    const handleLike = () => {
+        setIsLiked(isLiked => !isLiked)
+    }
 
     return (
-        <div>
+        <div className='recipe-card-container'>
             <p>{recipe.title}</p>
-            <img src={recipe.img_url} />
+            <img className='recipe-img' src={recipe.img_url} />
             <p>{recipe.description}</p>
+            <button className='like-button' onClick={handleLike}>{isLiked ? "💖" : "🖤"}</button>
         </div>
     )
 }

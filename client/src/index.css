@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.recipe-cards-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-card-container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.recipe-img {
+  width: 60%;
+}
+
+.like-button {
+  background: none;
+  border: none;
+}
+
+.like-button:hover {
+  cursor: pointer;
+}
