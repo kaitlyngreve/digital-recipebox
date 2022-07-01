@@ -54,6 +54,10 @@ function App() {
     setRecipes(filteredResp)
   }
 
+  const handleUpdateUser = (user) => {
+    setUser(user)
+  }
+
   const userRecipes = recipes.filter(recipe => recipe.user_id === user.id)
 
   if (!isAuthenticated) return <Login error={'please log in'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
@@ -67,7 +71,7 @@ function App() {
             <Signup />
           </Route>
           <Route path="/myrecipes">
-            <UserRecipe userRecipes={userRecipes} handleDeleteUserRecipe={handleDeleteUserRecipe} recipes={recipes} user={user} handleNewUserRecipe={handleNewUserRecipe} />
+            <UserRecipe userRecipes={userRecipes} handleDeleteUserRecipe={handleDeleteUserRecipe} recipes={recipes} user={user} handleNewUserRecipe={handleNewUserRecipe} cuisines={cuisines} />
           </Route>
           <Route path="/homepage">
             <Recipe recipes={recipes} />
@@ -75,8 +79,8 @@ function App() {
           <Route path="/recipes/:id">
             <UserRecipeDetail userRecipes={userRecipes} cuisines={cuisines} recipes={recipes} />
           </Route>
-          <Route path="/">
-            <Login />
+          <Route path="/login">
+            <Login handleUpdateUser={handleUpdateUser} />
           </Route>
         </Switch>
       </div>

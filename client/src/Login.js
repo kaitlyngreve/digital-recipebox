@@ -1,16 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-function Login({ setUser, setIsAuthenticated }) {
+function Login({ setUser, setIsAuthenticated, handleUpdateUser }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
 
     const history = useHistory()
-
-    // const handleUpdateUser = (user) => {
-    //     setUser((previousUser) => ({ ...previousUser, user }))
-    // }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -29,11 +25,11 @@ function Login({ setUser, setIsAuthenticated }) {
             .then(res => {
                 if (res) {
                     res.json()
+                        .then(history.push("/homepage"))
                         .then(user => {
-                            setUser(user)
+                            handleUpdateUser(user)
                             setIsAuthenticated(true)
                         })
-                        .then(history.push("/homepage"))
 
                 } else {
                     res.json()

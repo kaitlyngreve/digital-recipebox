@@ -1,6 +1,6 @@
 class Recipe < ApplicationRecord
-    belongs_to :cuisine
-    belongs_to :user
+    belongs_to :cuisine, optional: true
+    belongs_to :user, optional: true
 
     validates :title, presence: true, uniqueness: true
     validates :description, presence: true, length: { minimum: 20 }

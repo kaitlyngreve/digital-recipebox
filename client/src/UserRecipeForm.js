@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
-function UserRecipeForm({ handleNewUserRecipe, user }) {
+function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [measurementsIngredients, setMeasurementsIngredients] = useState("")
     const [directions, setDirections] = useState("")
     const [imgUrl, setImgUrl] = useState("")
-    const [username, setUsername] = useState("")
+    // const [username, setUsername] = useState("")
     const [cuisine, setCuisine] = useState("")
 
 
@@ -31,7 +31,7 @@ function UserRecipeForm({ handleNewUserRecipe, user }) {
                 measurements_ingredients: measurementsIngredients,
                 directions: directions,
                 img_url: imgUrl,
-                user_id: username,
+                user_id: user.id,
                 cuisine_id: cuisine
             })
         })
@@ -104,24 +104,13 @@ function UserRecipeForm({ handleNewUserRecipe, user }) {
                         </input>
                     </label>
                     <label>
-                        Username
-                        <input
-                            className="form-inputs"
-                            type="text"
-                            placeholder='...'
-                            value={username}
-                            onChange={e => setUsername(e.target.value)}>
-                        </input>
-                    </label>
-                    <label>
                         Cuisine
-                        <input
-                            className="form-inputs"
-                            type="text"
-                            placeholder='...'
-                            value={cuisine}
-                            onChange={e => setCuisine(e.target.value)}>
-                        </input>
+                        <select value={cuisine} onChange={e => setCuisine(e.target.value)}>
+                            <option>Select Cuisine</option>
+                            {cuisines.map((cuisine) => (
+                                <option value={cuisine.id}>{cuisine.cuisine_type}</option>
+                            ))}
+                        </select>
                     </label>
                     <button>Add Recipe to Box</button>
                 </form> : <h1 className='plus-sign' onClick={handleFormClick}> + </h1>}
