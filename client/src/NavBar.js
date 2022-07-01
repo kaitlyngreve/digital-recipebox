@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom'
 
-function NavBar() {
+function NavBar({ user }) {
 
     return (
         <div>
             <nav>
                 <NavLink className='nav' to='/homepage'>homepage</NavLink>
-                <NavLink className='nav' to='/myrecipes'>see my recipes</NavLink>
+                <NavLink className='nav' to='/myrecipes'>{user.username}'s recipes</NavLink>
             </nav>
         </div>
     )

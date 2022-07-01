@@ -1,9 +1,8 @@
 import { useParams } from 'react-router-dom'
 
 
-function UserRecipeDetail({ recipes, cuisines }) {
+function UserRecipeDetail({ recipes }) {
     const { id } = useParams();
-    // const cuisine = cuisines.map(cuisine => cuisine)
 
     const userRecipeDetails = recipes.filter(recipe => recipe.id == id)
 

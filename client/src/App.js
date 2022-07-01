@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import './App.css';
 import Recipe from './Recipe';
 import Header from './Header'
@@ -26,7 +26,6 @@ function App() {
       .then((r) => r.json())
       .then((data) => setCuisines(data));
   }, []);
-
 
   useEffect(() => {
     fetch('/me')
@@ -65,19 +64,26 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header />
         <Switch>
           <Route exact path="/signup">
-            <Signup />
+            <Signup handleUpdateUser={handleUpdateUser} setIsAuthenticated={setIsAuthenticated} />
           </Route>
           <Route path="/myrecipes">
-            <UserRecipe userRecipes={userRecipes} handleDeleteUserRecipe={handleDeleteUserRecipe} recipes={recipes} user={user} handleNewUserRecipe={handleNewUserRecipe} cuisines={cuisines} />
+            <Header user={user} />
+            <UserRecipe
+              userRecipes={userRecipes}
+              handleDeleteUserRecipe={handleDeleteUserRecipe}
+              recipes={recipes} user={user}
+              handleNewUserRecipe={handleNewUserRecipe} c
+              uisines={cuisines} />
           </Route>
           <Route path="/homepage">
-            <Recipe recipes={recipes} />
+            <Header user={user} />
+            <Recipe recipes={recipes} user={user} />
           </Route>
           <Route path="/recipes/:id">
-            <UserRecipeDetail userRecipes={userRecipes} cuisines={cuisines} recipes={recipes} />
+            <Header user={user} />
+            <UserRecipeDetail recipes={recipes} />
           </Route>
           <Route path="/login">
             <Login handleUpdateUser={handleUpdateUser} />

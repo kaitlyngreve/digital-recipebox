@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-function Signup() {
+function Signup({ handleUpdateUser, setIsAuthenticated, setError }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -19,8 +19,20 @@ function Signup() {
                 password_confirmation: passwordConfirmation,
             }),
         })
-            .then((r) => r.json())
-            .then(history.push("/homepage"));
+            .then(res => {
+                if (res) {
+                    res.json()
+                        .then(history.push("/homepage"))
+                        .then(user => {
+                            handleUpdateUser(user)
+                            setIsAuthenticated(true)
+                        })
+
+                } else {
+                    res.json()
+                        .then(json => setError(json.error))
+                }
+            })
     }
 
     const history = useHistory()
