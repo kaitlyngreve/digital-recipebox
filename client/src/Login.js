@@ -25,11 +25,11 @@ function Login({ setUser, setIsAuthenticated, handleUpdateUser }) {
             .then(res => {
                 if (res) {
                     res.json()
-                        .then(history.push("/homepage"))
                         .then(user => {
                             handleUpdateUser(user)
                             setIsAuthenticated(true)
                         })
+                        .then(history.push("/homepage"))
 
                 } else {
                     res.json()

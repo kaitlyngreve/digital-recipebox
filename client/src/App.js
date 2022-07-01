@@ -57,8 +57,6 @@ function App() {
     setUser(user)
   }
 
-  const userRecipes = recipes.filter(recipe => recipe.user_id === user.id)
-
   if (!isAuthenticated) return <Login error={'please log in'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
 
   return (
@@ -71,11 +69,10 @@ function App() {
           <Route path="/myrecipes">
             <Header user={user} />
             <UserRecipe
-              userRecipes={userRecipes}
               handleDeleteUserRecipe={handleDeleteUserRecipe}
               recipes={recipes} user={user}
-              handleNewUserRecipe={handleNewUserRecipe} c
-              uisines={cuisines} />
+              handleNewUserRecipe={handleNewUserRecipe}
+              cuisines={cuisines} />
           </Route>
           <Route path="/homepage">
             <Header user={user} />
