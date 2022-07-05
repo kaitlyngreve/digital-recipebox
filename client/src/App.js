@@ -67,7 +67,7 @@ function App() {
             <Signup handleUpdateUser={handleUpdateUser} setIsAuthenticated={setIsAuthenticated} />
           </Route>
           <Route path="/myrecipes">
-            <Header user={user} />
+            <Header user={user} setUser={setUser} />
             <UserRecipe
               handleDeleteUserRecipe={handleDeleteUserRecipe}
               recipes={recipes} user={user}
@@ -75,11 +75,11 @@ function App() {
               cuisines={cuisines} />
           </Route>
           <Route path="/homepage">
-            <Header user={user} />
+            <Header user={user} setUser={setUser} />
             <Recipe recipes={recipes} user={user} />
           </Route>
           <Route path="/recipes/:id">
-            <Header user={user} />
+            <Header user={user} setUser={setUser} />
             <UserRecipeDetail recipes={recipes} />
           </Route>
           <Route path="/login">
