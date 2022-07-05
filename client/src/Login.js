@@ -36,6 +36,8 @@ function Login({ setUser, setIsAuthenticated, handleUpdateUser }) {
                         .then(json => setError(json.error))
                 }
             })
+        setUsername("")
+        setPassword("")
     }
 
     function handleGoToSignUp(e) {
@@ -44,10 +46,12 @@ function Login({ setUser, setIsAuthenticated, handleUpdateUser }) {
     }
 
     return (
-        <div className='login'>
-            <form onSubmit={handleSubmit}>
+        <div className='login-container'>
+            <h1>RecipeBox</h1>
+            <form onSubmit={handleSubmit} className='login-form'>
                 <label htmlFor="username">Username:  </label>
                 <input
+                    className="login-form-input"
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
@@ -55,12 +59,15 @@ function Login({ setUser, setIsAuthenticated, handleUpdateUser }) {
                 <br></br>
                 <label>Password:  </label>
                 <input
+                    className="login-form-input"
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type="submit">Login</button>
-                <button type="login-button" onClick={handleGoToSignUp}>Click Here to Signup</button>
+                <div className='login-page-button-container'>
+                    <button className='login-page-button' type="submit">Login</button>
+                    <button type="login-button" className='login-page-button' onClick={handleGoToSignUp}>Click Here to Signup</button>
+                </div>
             </form>
             {error ? <div>{error}</div> : null}
         </div>

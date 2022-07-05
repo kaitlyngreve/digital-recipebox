@@ -19,10 +19,10 @@ function NavBar({ user, setUser }) {
 
     return (
         <div>
-            <nav>
+            <nav className='nav-links'>
                 <NavLink className='nav' to='/homepage'>homepage</NavLink>
                 <NavLink className='nav' to='/myrecipes'>{user.username}'s recipes</NavLink>
-                <NavLink className='logout-button' to='/login' onClick={handleLogout}>Logout</NavLink>
+                <NavLink className='nav' to='/login' onClick={handleLogout}>Logout</NavLink>
             </nav>
         </div>
     )
