@@ -21,10 +21,17 @@ code {
 .recipe-card-container {
   margin-left: auto;
   margin-right: auto;
+  border: solid #FF9AE6;
+  border-radius: 20px;
+  width: 800px;
+  height: 100%;
+  margin-bottom: 45px;
 }
 
 .recipe-img {
   width: 60%;
+  height: auto;
+  aspect-ratio: 1;
 }
 
 .like-button {

@@ -80,7 +80,7 @@ function App() {
           </Route>
           <Route path="/recipes/:id">
             <Header user={user} setUser={setUser} />
-            <UserRecipeDetail recipes={recipes} />
+            <UserRecipeDetail recipes={recipes} user={user} />
           </Route>
           <Route path="/login">
             <Login handleUpdateUser={handleUpdateUser} />
