@@ -15,6 +15,10 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
         setIsFormClicked(isFormClicked => !isFormClicked)
     }
 
+    const handleUpdateErrors = () => {
+        setRecipePostError(null)
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -124,9 +128,9 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
                             ))}
                         </select>
                     </label>
-                    <button>Add Recipe to Box</button>
-                    {recipePostError && <div className='error-message'>{recipePostError.join(", ")}</div>}
+                    <button onClick={handleUpdateErrors}>Add Recipe to Box</button>
                 </form> : <h1 className='plus-sign' onClick={handleFormClick}> + </h1>}
+            {recipePostError && <div className='error-message'>{recipePostError.join(", ")}</div>}
         </div>
     )
 }

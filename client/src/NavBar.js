@@ -4,6 +4,8 @@ import { useState } from 'react'
 
 function NavBar({ user, setUser, recipes }) {
     const [isClicked, setIsClicked] = useState(false)
+    const [isBlank, setIsBlank] = useState(false)
+
     let history = useHistory()
 
     function handleLogout() {
@@ -19,16 +21,20 @@ function NavBar({ user, setUser, recipes }) {
         console.log(user)
     }
 
-    const handleClicked = () => {
-        setIsClicked(isClicked => !isClicked)
+    const handleDisplayInfo = () => {
+        if (user.recipes !== [])
+            setIsBlank(false)
+        else {
+            setIsBlank(isBlank => !isBlank)
+        }
     }
 
 
     return (
         <div>
             <nav className='nav-links'>
-                <NavLink onClick={handleClicked} className={isClicked ? 'nav-clicked' : 'nav'} to='/homepage'>homepage</NavLink>
-                <NavLink onClick={handleClicked} className={isClicked ? 'nav-clicked' : 'nav'} to='/myrecipes'>my recipes</NavLink>
+                <NavLink className='nav' to='/homepage'>homepage</NavLink>
+                <NavLink className='nav' to='/myrecipes'>my recipes</NavLink>
                 <NavLink className='nav' to='/login' onClick={handleLogout}>Logout</NavLink>
             </nav>
         </div>

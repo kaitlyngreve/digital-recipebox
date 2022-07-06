@@ -15,6 +15,7 @@ function App() {
   const [user, setUser] = useState(null)
   const [isLiked, setIsLiked] = useState(false)
 
+
   const handleLike = () => {
     setIsLiked(isLiked => !isLiked)
   }
@@ -25,6 +26,7 @@ function App() {
       .then((r) => r.json())
       .then((data) => setRecipes(data));
   }, []);
+
 
   useEffect(() => {
     fetch("/cuisines")

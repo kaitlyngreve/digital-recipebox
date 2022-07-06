@@ -18,7 +18,7 @@ function UserRecipeCard({ userRecipe, handleDeleteUserRecipe }) {
             <Link to={`/recipes/${userRecipe.id}`}>
                 <img className='recipe-img' src={userRecipe.img_url} />
             </Link>
-            <button onClick={handleDelete}>remove recipe</button>
+            <button className='recipe-page-button' onClick={handleDelete}>remove recipe</button>
         </div>
     )
 }
