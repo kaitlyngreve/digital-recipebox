@@ -13,13 +13,12 @@ function UserRecipeCard({ userRecipe, handleDeleteUserRecipe }) {
     }
 
     return (
-        <div className='recipe-card-container'>
+        <div className='user-recipe-card-container'>
             <p>{userRecipe.title}</p>
             <Link to={`/recipes/${userRecipe.id}`}>
                 <img className='recipe-img' src={userRecipe.img_url} />
             </Link>
-            <p>{userRecipe.description}</p>
-            <button onClick={handleDelete}> X </button>
+            <button onClick={handleDelete}>remove recipe</button>
         </div>
     )
 }

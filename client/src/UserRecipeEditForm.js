@@ -1,18 +1,17 @@
 import { useState } from 'react'
 
-function UserRecipeEditForm({ user }) {
-    const [title, setTitle] = useState("")
-    const [description, setDescription] = useState("")
-    const [measurementsIngredients, setMeasurementsIngredients] = useState("")
-    const [directions, setDirections] = useState("")
-    const [imgUrl, setImgUrl] = useState("")
-    const [cuisine, setCuisine] = useState("")
+function UserRecipeEditForm({ user, recipe }) {
+    const [title, setTitle] = useState(recipe.title)
+    const [description, setDescription] = useState(recipe.description)
+    const [measurementsIngredients, setMeasurementsIngredients] = useState(recipe.measurements_ingredients)
+    const [directions, setDirections] = useState(recipe.directions)
+    const [imgUrl, setImgUrl] = useState(recipe.img_url)
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        fetch('/recipes', {
-            method: 'POST',
+        fetch(`/recipes/${recipe.id}`, {
+            method: 'PATCH',
             headers: {
                 "Content-Type": "application/json",
                 'Accept': 'application/json'
@@ -24,17 +23,10 @@ function UserRecipeEditForm({ user }) {
                 directions: directions,
                 img_url: imgUrl,
                 user_id: user.id,
-                cuisine_id: cuisine
             })
         })
             .then(r => r.json())
             .then(data => console.log(data))
-
-        setTitle("")
-        setDescription("")
-        setMeasurementsIngredients("")
-        setDirections("")
-        setImgUrl("")
     }
 
 

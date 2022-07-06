@@ -37,11 +37,16 @@ function Signup({ handleUpdateUser, setIsAuthenticated, setError }) {
 
     const history = useHistory()
 
+    const handleBack = () => {
+        history.push('/login')
+    }
+
     return (
-        <div className='signup'>
-            <form onSubmit={handleSubmit} >
+        <div className='login-container'>
+            <form onSubmit={handleSubmit} className="login-form">
                 <label htmlFor="username">Username:  </label>
                 <input
+                    className="login-form-input"
                     type="text"
                     id="username"
                     value={username}
@@ -50,6 +55,7 @@ function Signup({ handleUpdateUser, setIsAuthenticated, setError }) {
                 <br></br>
                 <label htmlFor="password">Password:  </label>
                 <input
+                    className="login-form-input"
                     type="password"
                     id="password"
                     value={password}
@@ -58,12 +64,16 @@ function Signup({ handleUpdateUser, setIsAuthenticated, setError }) {
                 <br></br>
                 <label htmlFor="password_confirmation">Confirm Password:  </label>
                 <input
+                    className="login-form-input"
                     type="password"
                     id="password_confirmation"
                     value={passwordConfirmation}
                     onChange={(e) => setPasswordConfirmation(e.target.value)}
                 />
-                <button type="submit"> Submit </button>
+                <div className='login-page-button-container'>
+                    <button className='login-page-button' type="submit"> Signup! </button>
+                    <button onClick={handleBack} className="login-page-button"> 🔙 </button>
+                </div>
             </form>
         </div>
     );

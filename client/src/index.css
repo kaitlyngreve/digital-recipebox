@@ -21,8 +21,6 @@ code {
 .recipe-card-container {
   margin-left: auto;
   margin-right: auto;
-  border: solid #FF9AE6;
-  border-radius: 20px;
   width: 800px;
   height: 100%;
   margin-bottom: 45px;
@@ -32,6 +30,7 @@ code {
   width: 60%;
   height: auto;
   aspect-ratio: 1;
+  object-fit: cover;
 }
 
 .like-button {
@@ -45,6 +44,41 @@ code {
 
 .plus-sign:hover {
   cursor: pointer;
+}
+
+.user-recipe-card-container {
+  padding-bottom: 15px;
+  border-radius: 15px;
+  overflow: hidden;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+img.user-recipe-card-container:hover {
+  cursor: pointer;
+}
+
+.user-recipe-cards-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+  justify-content: center;
+}
+
+.error-message {
+  /* border: solid rgb(174, 18, 18, 0.4);
+  background: rgb(136, 135, 135, 0.2);
+  border-radius: 25px; */
+  width: 20%;
+  font-family: 'Gill Sans';
+  margin-left: auto;
+  margin-right: auto;
+  padding: 7px;
+  margin-top: 40px;
+  color: rgb(174, 18, 18);
 }
 
 /* login page */
@@ -101,28 +135,58 @@ code {
 /* nav bar */
 .header-container {
   background-color: #9AB4FF;
-  height: 120px;
 }
 
 .title {
   margin: 0;
   text-align: left;
   font-size: 56px;
+  color: white;
+  -webkit-text-stroke: .5px black;
 }
 
 .nav-links {
   text-align: right;
-  padding: 30px;
 }
 
 .nav {
-  padding: 30px;
+  padding: 25px 30px 20px;
   text-decoration: none;
+  margin: 0 5px;
   color: black;
   font-size: 18px;
+  display: inline-block;
+}
+
+.nav-clicked {
+  padding: 25px 30px 20px;
+  text-decoration: none;
+  margin: 0 5px;
+  color: black;
+  font-size: 18px;
+  display: inline-block;
+  background-color: #FCF5DE;
+  border-radius: 20px 20px 0 0;
+}
+
+.nav-clicked:hover {
+  background-color: #FCF5DE;
+  border-radius: 20px 20px 0 0;
+  cursor: pointer;
 }
 
 .nav:hover {
   background-color: #FCF5DE;
-  border-radius: 20px;
+  border-radius: 20px 20px 0 0;
+  cursor: pointer;
 }
+
+/* .ultimate-header-container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+} */

@@ -6,9 +6,8 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
     const [measurementsIngredients, setMeasurementsIngredients] = useState("")
     const [directions, setDirections] = useState("")
     const [imgUrl, setImgUrl] = useState("")
-    // const [username, setUsername] = useState("")
     const [cuisine, setCuisine] = useState("")
-
+    const [recipePostError, setRecipePostError] = useState([])
 
     const [isFormClicked, setIsFormClicked] = useState(false)
 
@@ -35,8 +34,21 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
                 cuisine_id: cuisine
             })
         })
-            .then(r => r.json())
-            .then(data => handleNewUserRecipe(data))
+            // .then(r => r.json())
+            // .then(data => handleNewUserRecipe(data))
+            .then(res => {
+                console.log(res)
+                if (res.ok) {
+                    res.json().then((data) => {
+                        handleNewUserRecipe(data)
+                    })
+                }
+                else {
+                    res.json().then((json) => {
+                        setRecipePostError(json.errors)
+                    })
+                }
+            })
 
         setTitle("")
         setDescription("")
@@ -113,6 +125,7 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
                         </select>
                     </label>
                     <button>Add Recipe to Box</button>
+                    {recipePostError && <div className='error-message'>{recipePostError.join(", ")}</div>}
                 </form> : <h1 className='plus-sign' onClick={handleFormClick}> + </h1>}
         </div>
     )

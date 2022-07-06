@@ -13,6 +13,11 @@ function App() {
   const [cuisines, setCuisines] = useState([])
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
+  const [isLiked, setIsLiked] = useState(false)
+
+  const handleLike = () => {
+    setIsLiked(isLiked => !isLiked)
+  }
 
 
   useEffect(() => {
@@ -75,7 +80,7 @@ function App() {
               cuisines={cuisines} />
           </Route>
           <Route path="/homepage">
-            <Header user={user} setUser={setUser} />
+            <Header user={user} setUser={setUser} recipes={recipes} />
             <Recipe recipes={recipes} user={user} />
           </Route>
           <Route path="/recipes/:id">
@@ -83,7 +88,7 @@ function App() {
             <UserRecipeDetail recipes={recipes} user={user} />
           </Route>
           <Route path="/login">
-            <Login handleUpdateUser={handleUpdateUser} />
+            <Login handleUpdateUser={handleUpdateUser} user={user} />
           </Route>
         </Switch>
       </div>

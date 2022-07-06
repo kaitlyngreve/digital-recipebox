@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-function Login({ setUser, setIsAuthenticated, handleUpdateUser }) {
+function Login({ user, setIsAuthenticated, handleUpdateUser }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
@@ -45,6 +45,17 @@ function Login({ setUser, setIsAuthenticated, handleUpdateUser }) {
         history.push("/signup")
     }
 
+    // const [isBlank, setIsBlank] = useState(true)
+    // console.log(user.recipes)
+
+    // const handleDisplay = () => {
+    //     if (user.recipes === [])
+    //         setIsBlank(isBlank)
+    //     else {
+    //         setIsBlank(!isBlank)
+    //     }
+    // }
+
     return (
         <div className='login-container'>
             <h1>RecipeBox</h1>
@@ -68,8 +79,8 @@ function Login({ setUser, setIsAuthenticated, handleUpdateUser }) {
                     <button className='login-page-button' type="submit">Login</button>
                     <button type="login-button" className='login-page-button' onClick={handleGoToSignUp}>Click Here to Signup</button>
                 </div>
+                {error ? <div>{error}</div> : null}
             </form>
-            {error ? <div>{error}</div> : null}
         </div>
     );
 }

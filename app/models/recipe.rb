@@ -7,4 +7,5 @@ class Recipe < ApplicationRecord
     validates :measurements_ingredients, presence: true
     validates :directions, presence: true
     validates :img_url, presence: true
+    # validates :like, numericality: { greater_than_or_equal_to: 0 }
 end
