@@ -7,12 +7,14 @@ import Login from './Login'
 import Signup from './Signup';
 import UserRecipe from './UserRecipe';
 import UserRecipeDetail from './UserRecipeDetail'
+import Search from './Search'
 
 function App() {
   const [recipes, setRecipes] = useState([]);
   const [cuisines, setCuisines] = useState([])
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
+  const [searchRecipes, setSearchRecipes] = useState("")
   const [isLiked, setIsLiked] = useState(false)
 
 
@@ -64,6 +66,14 @@ function App() {
     setUser(user)
   }
 
+  const handleSearchRecipes = (e) => {
+    setSearchRecipes(e.target.value)
+  }
+
+  const recipesToDisplay = recipes.filter((recipe) => {
+    return recipe.title.toLowerCase().includes(searchRecipes.toLowerCase())
+  })
+
   if (!isAuthenticated) return <Login error={'please log in'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
 
   return (
@@ -83,7 +93,7 @@ function App() {
           </Route>
           <Route path="/homepage">
             <Header user={user} setUser={setUser} recipes={recipes} />
-            <Recipe recipes={recipes} user={user} />
+            <Recipe recipes={recipesToDisplay} user={user} cuisines={cuisines} handleSearchRecipes={handleSearchRecipes} setRecipes={searchRecipes} />
           </Route>
           <Route path="/recipes/:id">
             <Header user={user} setUser={setUser} />
