@@ -7,6 +7,7 @@ import Login from './Login'
 import Signup from './Signup';
 import UserRecipe from './UserRecipe';
 import UserRecipeDetail from './UserRecipeDetail'
+import Liked from './Liked'
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -14,6 +15,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
   const [searchRecipes, setSearchRecipes] = useState("")
+  const [users, setUsers] = useState([])
 
   useEffect(() => {
     fetch("/recipes")
@@ -42,6 +44,12 @@ function App() {
     fetch('/recipes')
       .then(res => res.json())
       .then(setRecipes);
+  }, []);
+
+  useEffect(() => {
+    fetch("/users")
+      .then((r) => r.json())
+      .then((data) => setUsers(data));
   }, []);
 
   const handleNewUserRecipe = (data) => {
@@ -87,6 +95,7 @@ function App() {
           <Route path="/homepage">
             <Header user={user} setUser={setUser} recipes={recipes} />
             <Recipe
+              arrayOfUsers={users}
               recipes={recipesToDisplay}
               user={user} cuisines={cuisines}
               handleSearchRecipes={handleSearchRecipes}
@@ -98,6 +107,10 @@ function App() {
           </Route>
           <Route path="/login">
             <Login handleUpdateUser={handleUpdateUser} user={user} />
+          </Route>
+          <Route path="/liked">
+            <Header user={user} setUser={setUser} />
+            <Liked />
           </Route>
         </Switch>
       </div>

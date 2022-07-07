@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_28_175401) do
     t.string "measurements_ingredients"
     t.text "directions"
     t.string "img_url"
-    t.integer "like"
+    t.boolean "like", default: false
     t.integer "cuisine_id"
     t.integer "user_id"
     t.datetime "created_at", null: false

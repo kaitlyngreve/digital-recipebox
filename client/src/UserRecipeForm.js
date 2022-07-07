@@ -9,12 +9,6 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
     const [cuisine, setCuisine] = useState("")
     const [recipePostError, setRecipePostError] = useState([])
 
-    // const [isFormClicked, setIsFormClicked] = useState(false)
-
-    // const handleFormClick = () => {
-    //     setIsFormClicked(isFormClicked => !isFormClicked)
-    // }
-
     const handleUpdateErrors = () => {
         setRecipePostError(null)
     }
@@ -38,8 +32,6 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
                 cuisine_id: cuisine
             })
         })
-            // .then(r => r.json())
-            // .then(data => handleNewUserRecipe(data))
             .then(res => {
                 console.log(res)
                 if (res.ok) {
@@ -77,35 +69,40 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
                 </label>
                 <label>
                     Description
-                    <input
+                    <textarea
+                        rows='5'
+                        cols='30'
                         className="form-inputs"
                         type="text"
                         placeholder='...'
                         value={description}
                         onChange={e => setDescription(e.target.value)}>
-                    </input>
+                    </textarea>
                 </label>
                 <label>
                     Ingredients
-                    <input
+                    <textarea
+                        rows='10'
+                        cols='50'
                         className="form-inputs"
                         type="text"
                         placeholder='Ingredients & Measurements'
                         value={measurementsIngredients}
                         onChange={e => setMeasurementsIngredients(e.target.value)}>
-                    </input>
+                    </textarea>
                 </label>
                 <br></br>
                 <br></br>
                 <label>
                     Directions
-                    <input
+                    <textarea
+                        rows='10'
+                        cols='50'
                         className="form-inputs"
-                        type="text"
-                        placeholder='...'
+                        type='text'
                         value={directions}
                         onChange={e => setDirections(e.target.value)}>
-                    </input>
+                    </textarea>
                 </label>
                 <label>
                     Image

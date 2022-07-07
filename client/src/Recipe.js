@@ -1,8 +1,7 @@
 import RecipeCard from "./RecipeCard"
-import { useState } from 'react'
 import Search from "./Search"
 
-function Recipe({ recipes, user, handleSearchRecipes, searchRecipes }) {
+function Recipe({ recipes, user, handleSearchRecipes, searchRecipes, arrayOfUsers }) {
 
     let sortedRecipes = recipes.sort(() => Math.random() - 0.5)
 

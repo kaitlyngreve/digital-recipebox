@@ -35,6 +35,7 @@ function NavBar({ user, setUser, recipes }) {
             <nav className='nav-links'>
                 <NavLink className='nav' to='/homepage'>homepage</NavLink>
                 <NavLink className='nav' to='/myrecipes'>my recipes</NavLink>
+                <NavLink className='nav' to='/liked'>my likes</NavLink>
                 <NavLink className='nav' to='/login' onClick={handleLogout}>Logout</NavLink>
             </nav>
         </div>

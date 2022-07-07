@@ -6,7 +6,7 @@ function Header({ user }) {
         <div className='ultimate-header-container'>
             <div className="header-container" >
                 <div className="title-container">
-                    <h1 className="title">RecipeBox</h1>
+                    <h1 className="title">Recipy</h1>
                 </div>
                 <NavBar user={user} />
             </div>

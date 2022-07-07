@@ -48,7 +48,7 @@ function Login({ setIsAuthenticated, handleUpdateUser }) {
     return (
         <div className='login-background'>
             <div className='login-container'>
-                <h1>RecipeBox</h1>
+                <h1>Recipy</h1>
                 <form onSubmit={handleSubmit} className='login-form'>
                     <label htmlFor="username">Username:  </label>
                     <input

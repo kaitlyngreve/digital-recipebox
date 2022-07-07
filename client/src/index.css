@@ -5,12 +5,16 @@ body {
   font-family: 'Titan One';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #fcf5de;
+  background: #FFE5D5;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+textarea {
+  resize: none;
 }
 
 .login-background {
@@ -50,47 +54,6 @@ code {
     transform: translate3d(0, -100vh, 0);
   }
 } */
-
-.login-background-2 {
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  right: 0px;
-  left: 0px;
-  overflow-x: hidden;
-}
-
-.login-background-2:before {
-  content: '';
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 200vh;
-  background-image: url('/Users/kaitiejones/Development/code/phase-5/phase-5-project/images/pawel-czerwinski-3T4rfR_XZf0-unsplash.jpg');
-  background-size: auto 50%;
-  background-repeat: repeat-y;
-  background-position-y: center;
-  background-position-y: 0vh;
-  z-index: -1;
-  pointer-events: none;
-  /* background-size: cover; */
-}
-
-.login-background-2:before {
-  animation: scrollBG 67s linear 0s infinite;
-}
-
-@keyframes scrollBG {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-
-  100% {
-    transform: translate3d(0, -100vh, 0);
-  }
-}
 
 .recipe-cards-container {
   display: flex;
@@ -241,7 +204,7 @@ img.user-recipe-card-container:hover {
 
 /* nav bar */
 .header-container {
-  background-color: #b7f2f9;
+  background-color: #FFB88C;
 }
 
 .title {
@@ -277,13 +240,13 @@ img.user-recipe-card-container:hover {
 }
 
 .nav-clicked:hover {
-  background-color: #fcf5de;
+  background-color: #FFE5D5;
   border-radius: 20px 20px 0 0;
   cursor: pointer;
 }
 
 .nav:hover {
-  background-color: #fcf5de;
+  background-color: #FFE5D5;
   border-radius: 20px 20px 0 0;
   cursor: pointer;
 }

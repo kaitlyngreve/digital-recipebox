@@ -6,7 +6,7 @@ class CreateRecipes < ActiveRecord::Migration[7.0]
       t.string :measurements_ingredients
       t.text :directions
       t.string :img_url
-      t.integer :like
+      t.boolean :like, default: :false
       t.integer :cuisine_id
       t.integer :user_id
 
