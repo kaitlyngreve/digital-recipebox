@@ -14,12 +14,9 @@ code {
 }
 
 .login-background {
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  right: 0px;
-  left: 0px;
-  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .login-background:before {
@@ -29,18 +26,59 @@ code {
   top: 0;
   left: 0;
   width: 100%;
-  height: 200vh;
+  height: 100vh;
   background-image: url('/Users/kaitiejones/Development/code/phase-5/phase-5-project/images/jeremy-bezanger-QJ7gHF6V4no-unsplash.jpg');
+  background-size: auto 50%;
+  background-repeat: repeat-y;
+  background-position-x: center;
+  background-position-y: 0vh;
+  z-index: -1;
+  pointer-events: none;
+  background-size: cover;
+}
+
+/* .login-background:before {
+  animation: scrollBG 67s linear 0s infinite;
+}
+
+@keyframes scrollBG {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, -100vh, 0);
+  }
+} */
+
+.login-background-2 {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  overflow-x: hidden;
+}
+
+.login-background-2:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200vh;
+  background-image: url('/Users/kaitiejones/Development/code/phase-5/phase-5-project/images/pawel-czerwinski-3T4rfR_XZf0-unsplash.jpg');
   background-size: auto 50%;
   background-repeat: repeat-y;
   background-position-y: center;
   background-position-y: 0vh;
-  /* opacity: .5; */
   z-index: -1;
   pointer-events: none;
+  /* background-size: cover; */
 }
 
-.login-background:before {
+.login-background-2:before {
   animation: scrollBG 67s linear 0s infinite;
 }
 
@@ -85,6 +123,13 @@ code {
 
 .plus-sign:hover {
   cursor: pointer;
+}
+
+.plus-sign {
+  background: none;
+  border: none;
+  font-size: 35px;
+  padding: 15px;
 }
 
 .user-recipe-card-container {
@@ -149,11 +194,11 @@ img.user-recipe-card-container:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 500px;
-  height: 400px;
-  margin-top: 300px;
+  width: fit-content;
+  padding: 50px;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 50px;
 }
 
 .login-container h1 {
@@ -196,15 +241,15 @@ img.user-recipe-card-container:hover {
 
 /* nav bar */
 .header-container {
-  background-color: #8CD3FF;
+  background-color: #b7f2f9;
 }
 
 .title {
   margin: 0;
   text-align: left;
   font-size: 56px;
-  color: white;
-  -webkit-text-stroke: .5px black;
+  color: black;
+  /* -webkit-text-stroke: .5px white; */
 }
 
 .nav-links {

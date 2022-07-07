@@ -7,7 +7,6 @@ import Login from './Login'
 import Signup from './Signup';
 import UserRecipe from './UserRecipe';
 import UserRecipeDetail from './UserRecipeDetail'
-import Search from './Search'
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -15,13 +14,6 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
   const [searchRecipes, setSearchRecipes] = useState("")
-  const [isLiked, setIsLiked] = useState(false)
-
-
-  const handleLike = () => {
-    setIsLiked(isLiked => !isLiked)
-  }
-
 
   useEffect(() => {
     fetch("/recipes")
@@ -87,13 +79,18 @@ function App() {
             <Header user={user} setUser={setUser} />
             <UserRecipe
               handleDeleteUserRecipe={handleDeleteUserRecipe}
-              recipes={recipes} user={user}
+              recipes={recipes}
+              user={user}
               handleNewUserRecipe={handleNewUserRecipe}
               cuisines={cuisines} />
           </Route>
           <Route path="/homepage">
             <Header user={user} setUser={setUser} recipes={recipes} />
-            <Recipe recipes={recipesToDisplay} user={user} cuisines={cuisines} handleSearchRecipes={handleSearchRecipes} setRecipes={searchRecipes} />
+            <Recipe
+              recipes={recipesToDisplay}
+              user={user} cuisines={cuisines}
+              handleSearchRecipes={handleSearchRecipes}
+              setRecipes={searchRecipes} />
           </Route>
           <Route path="/recipes/:id">
             <Header user={user} setUser={setUser} />

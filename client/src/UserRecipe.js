@@ -3,14 +3,20 @@ import UserRecipeCard from "./UserRecipeCard";
 import { useState, useEffect } from 'react'
 
 function UserRecipes({ recipes, user, handleNewUserRecipe, handleDeleteUserRecipe, cuisines }) {
+    const [isFormClicked, setIsFormClicked] = useState(false)
 
     const userRecipes = recipes.filter(recipe => recipe.user_id === user.id)
 
+    const handleFormClick = () => {
+        setIsFormClicked(isFormClicked => !isFormClicked)
+    }
 
 
     return (
         <div>
-            <UserRecipeForm handleNewUserRecipe={handleNewUserRecipe} user={user} cuisines={cuisines} />
+            {isFormClicked ?
+                <UserRecipeForm handleNewUserRecipe={handleNewUserRecipe} user={user} cuisines={cuisines} />
+                : <button className="plus-sign" onClick={handleFormClick} > + </button>}
             {user.recipes.length === 0 ?
                 <div>
                     <p>Hello {user.username}! Welcome to RecipeBox, a social media platform for sharing and creating recipes.

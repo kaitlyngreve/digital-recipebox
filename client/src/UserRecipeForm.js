@@ -9,11 +9,11 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
     const [cuisine, setCuisine] = useState("")
     const [recipePostError, setRecipePostError] = useState([])
 
-    const [isFormClicked, setIsFormClicked] = useState(false)
+    // const [isFormClicked, setIsFormClicked] = useState(false)
 
-    const handleFormClick = () => {
-        setIsFormClicked(isFormClicked => !isFormClicked)
-    }
+    // const handleFormClick = () => {
+    //     setIsFormClicked(isFormClicked => !isFormClicked)
+    // }
 
     const handleUpdateErrors = () => {
         setRecipePostError(null)
@@ -59,77 +59,75 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
         setMeasurementsIngredients("")
         setDirections("")
         setImgUrl("")
-        setIsFormClicked(false)
     }
 
 
     return (
         <div>
-            {isFormClicked ?
-                <form onSubmit={handleSubmit} className="form-container">
-                    <h4 className="form-header">Create New Recipe</h4>
-                    <label className="form-label">Recipe Title:
-                        <input
-                            className="form-inputs"
-                            type="text"
-                            placeholder='Recipe Title'
-                            value={title}
-                            onChange={e => setTitle(e.target.value)}>
-                        </input>
-                    </label>
-                    <label>
-                        Description
-                        <input
-                            className="form-inputs"
-                            type="text"
-                            placeholder='...'
-                            value={description}
-                            onChange={e => setDescription(e.target.value)}>
-                        </input>
-                    </label>
-                    <label>
-                        Ingredients
-                        <input
-                            className="form-inputs"
-                            type="text"
-                            placeholder='Ingredients & Measurements'
-                            value={measurementsIngredients}
-                            onChange={e => setMeasurementsIngredients(e.target.value)}>
-                        </input>
-                    </label>
-                    <br></br>
-                    <br></br>
-                    <label>
-                        Directions
-                        <input
-                            className="form-inputs"
-                            type="text"
-                            placeholder='...'
-                            value={directions}
-                            onChange={e => setDirections(e.target.value)}>
-                        </input>
-                    </label>
-                    <label>
-                        Image
-                        <input
-                            className="form-inputs"
-                            type="text"
-                            placeholder='Food Image'
-                            value={imgUrl}
-                            onChange={e => setImgUrl(e.target.value)}>
-                        </input>
-                    </label>
-                    <label>
-                        Cuisine
-                        <select value={cuisine} onChange={e => setCuisine(e.target.value)}>
-                            <option>Select Cuisine</option>
-                            {cuisines.map((cuisine) => (
-                                <option value={cuisine.id}>{cuisine.cuisine_type}</option>
-                            ))}
-                        </select>
-                    </label>
-                    <button onClick={handleUpdateErrors}>Add Recipe to Box</button>
-                </form> : <h1 className='plus-sign' onClick={handleFormClick}> + </h1>}
+            <form onSubmit={handleSubmit} className="form-container">
+                <h4 className="form-header">Create New Recipe</h4>
+                <label className="form-label">Recipe Title:
+                    <input
+                        className="form-inputs"
+                        type="text"
+                        placeholder='Recipe Title'
+                        value={title}
+                        onChange={e => setTitle(e.target.value)}>
+                    </input>
+                </label>
+                <label>
+                    Description
+                    <input
+                        className="form-inputs"
+                        type="text"
+                        placeholder='...'
+                        value={description}
+                        onChange={e => setDescription(e.target.value)}>
+                    </input>
+                </label>
+                <label>
+                    Ingredients
+                    <input
+                        className="form-inputs"
+                        type="text"
+                        placeholder='Ingredients & Measurements'
+                        value={measurementsIngredients}
+                        onChange={e => setMeasurementsIngredients(e.target.value)}>
+                    </input>
+                </label>
+                <br></br>
+                <br></br>
+                <label>
+                    Directions
+                    <input
+                        className="form-inputs"
+                        type="text"
+                        placeholder='...'
+                        value={directions}
+                        onChange={e => setDirections(e.target.value)}>
+                    </input>
+                </label>
+                <label>
+                    Image
+                    <input
+                        className="form-inputs"
+                        type="text"
+                        placeholder='Food Image'
+                        value={imgUrl}
+                        onChange={e => setImgUrl(e.target.value)}>
+                    </input>
+                </label>
+                <label>
+                    Cuisine
+                    <select value={cuisine} onChange={e => setCuisine(e.target.value)}>
+                        <option>Select Cuisine</option>
+                        {cuisines.map((cuisine) => (
+                            <option value={cuisine.id}>{cuisine.cuisine_type}</option>
+                        ))}
+                    </select>
+                </label>
+                <button onClick={handleUpdateErrors}>Add Recipe to Box</button>
+            </form>
             {recipePostError && <div className='error-message'>{recipePostError.join(", ")}</div>}
         </div>
     )
