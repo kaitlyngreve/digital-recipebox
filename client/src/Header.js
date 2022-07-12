@@ -1,6 +1,6 @@
 import NavBar from "./NavBar";
 
-function Header({ user }) {
+function Header({ user, setUser }) {
 
     return (
         <div className='ultimate-header-container'>
@@ -8,7 +8,7 @@ function Header({ user }) {
                 <div className="title-container">
                     <h1 className="title">Recipy</h1>
                 </div>
-                <NavBar user={user} />
+                <NavBar user={user} setUser={setUser} />
             </div>
         </div>
     )

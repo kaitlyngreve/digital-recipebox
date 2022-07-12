@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     end
 
     def create
+        # debugger
         user = User.create!(user_params)
         session[:user_id] = user.id
         render json: user, status: :created
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :password, :bio, :password_digest)
+        params.permit(:username, :password, :bio, :password_confirmation)
     end
 
     def render_not_found_response

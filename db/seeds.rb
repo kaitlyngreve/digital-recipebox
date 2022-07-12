@@ -31,7 +31,7 @@ Recipe.create(
     directions: "Add all ingredients EXCEPT for the olive oil into a food processor. Pulse about 5 times until a coarse mixture forms. Turn the food processor on low and add the olive oil slowly and in a steady stream. Serve immediately or store in a bowl covered in the refrigerator ",
     img_url: "https://images.unsplash.com/photo-1519623286359-e9f3cbef015b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
     cuisine_id: c4.id,
-    user_id: Faker::Number.within(range: 10..14)
+    user_id: Faker::Number.within(range: 1..5)
 )
 
 Recipe.create(
@@ -45,7 +45,7 @@ Recipe.create(
     fully combined. Pour batter into pan and cook until golden brown on each side. Top with desired toppings.",
     img_url: "https://images.unsplash.com/photo-1551772412-61103ced2766?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587&q=80",
     cuisine_id: c1.id,
-    user_id: Faker::Number.within(range: 10..14)
+    user_id: Faker::Number.within(range: 1..5)
 )
 
 Recipe.create(
@@ -75,7 +75,7 @@ Recipe.create(
     Drizzle icing on cooled danish's. Serve immediately! ",
     img_url: "https://4.bp.blogspot.com/-3SE5aXIVMF0/V1II0c41LCI/AAAAAAAAVps/_h_Wzb2r1O8W015b5UIt2VICvQ3sXNeSACKgB/s1600/IMG_5342.jpg",
     cuisine_id: c7.id,
-    user_id: Faker::Number.within(range: 10..14)
+    user_id: Faker::Number.within(range: 1..5)
 )
 
 Recipe.create(
@@ -94,7 +94,7 @@ Recipe.create(
     Pour sauce, heavy cream, and red pepper flakes into the pan with the onions and garlic. Place on low heat and simmer for about 10-20 minutes. Stir in cooked gnocchi. Serve immediately and top with grated parmesan.",
     img_url: "https://images.unsplash.com/photo-1593003290701-d5e71453a85a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80",
     cuisine_id: c4.id,
-    user_id: Faker::Number.within(range: 10..14)
+    user_id: Faker::Number.within(range: 1..5)
 )
 
 Recipe.create(
@@ -108,7 +108,7 @@ Recipe.create(
     I like to top with some combination of peanutbutter, raspberries, blueberries, sliced almonds, honey, and cinnamon, chia seeds, etc. ",
     img_url: "https://images.unsplash.com/photo-1610406765661-57646c40da59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80",
     cuisine_id: c1.id,
-    user_id: Faker::Number.within(range: 10..14)
+    user_id: Faker::Number.within(range: 1..5)
 )
 
 Recipe.create(
@@ -131,7 +131,7 @@ Recipe.create(
     Grill chicken until fully cooked. Serve warm on pita with tzatziki sauce and veggies.",
     img_url: "https://images.unsplash.com/photo-1643594462181-7667928d072e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1636&q=80",
     cuisine_id: c3.id,
-    user_id: Faker::Number.within(range: 10..14)
+    user_id: Faker::Number.within(range: 1..5)
 )
 
 puts "Done seeding recipes ✏️"

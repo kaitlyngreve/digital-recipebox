@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :likes, only: [:index, :create]
   resources :cuisines, only: [:index, :show, :create]
   resources :recipes
   # resources :users, only: [:index, :create, :destroy]

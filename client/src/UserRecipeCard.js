@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 
-function UserRecipeCard({ userRecipe, handleDeleteUserRecipe }) {
+function UserRecipeCard({ userRecipe, handleDeleteUserRecipe, handleClick }) {
 
     const handleDelete = () => {
         fetch(`/recipes/${userRecipe.id}`, {

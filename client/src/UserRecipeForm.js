@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 
-function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
+function UserRecipeForm({ handleNewUserRecipe, user, cuisines, handleAddRecipe }) {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [measurementsIngredients, setMeasurementsIngredients] = useState("")
@@ -15,6 +16,7 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
 
         fetch('/recipes', {
             method: 'POST',
@@ -37,6 +39,7 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
                 if (res.ok) {
                     res.json().then((data) => {
                         handleNewUserRecipe(data)
+                            .then(<Redirect to='/myrecipes' />)
                     })
                 }
                 else {
@@ -51,13 +54,15 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
         setMeasurementsIngredients("")
         setDirections("")
         setImgUrl("")
+        setCuisine("")
+        handleAddRecipe()
     }
 
 
     return (
         <div>
             <form onSubmit={handleSubmit} className="form-container">
-                <h4 className="form-header">Create New Recipe</h4>
+                <h4 className="form-header">🥕 Create New Recipe 🥕</h4>
                 <label className="form-label">Recipe Title:
                     <input
                         className="form-inputs"
@@ -67,8 +72,8 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
                         onChange={e => setTitle(e.target.value)}>
                     </input>
                 </label>
-                <label>
-                    Description
+                <label className="form-label">
+                    Description:
                     <textarea
                         rows='5'
                         cols='30'
@@ -79,8 +84,17 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
                         onChange={e => setDescription(e.target.value)}>
                     </textarea>
                 </label>
-                <label>
-                    Ingredients
+                <label className="form-label">
+                    Cuisine:
+                    <select className='form-dropdown' value={cuisine} onChange={e => setCuisine(e.target.value)}>
+                        <option>Select Cuisine</option>
+                        {cuisines.map((cuisine) => (
+                            <option className='dropdown' value={cuisine.id}>{cuisine.cuisine_type}</option>
+                        ))}
+                    </select>
+                </label>
+                <label className="form-label">
+                    Ingredients:
                     <textarea
                         rows='10'
                         cols='50'
@@ -93,8 +107,8 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
                 </label>
                 <br></br>
                 <br></br>
-                <label>
-                    Directions
+                <label className="form-label">
+                    Directions:
                     <textarea
                         rows='10'
                         cols='50'
@@ -104,8 +118,8 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
                         onChange={e => setDirections(e.target.value)}>
                     </textarea>
                 </label>
-                <label>
-                    Image
+                <label className="form-label">
+                    Image:
                     <input
                         className="form-inputs"
                         type="text"
@@ -114,16 +128,7 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines }) {
                         onChange={e => setImgUrl(e.target.value)}>
                     </input>
                 </label>
-                <label>
-                    Cuisine
-                    <select value={cuisine} onChange={e => setCuisine(e.target.value)}>
-                        <option>Select Cuisine</option>
-                        {cuisines.map((cuisine) => (
-                            <option value={cuisine.id}>{cuisine.cuisine_type}</option>
-                        ))}
-                    </select>
-                </label>
-                <button onClick={handleUpdateErrors}>Add Recipe to Box</button>
+                <button className='form-button' onClick={handleUpdateErrors}>Add Recipe to Box</button>
             </form>
             {recipePostError && <div className='error-message'>{recipePostError.join(", ")}</div>}
         </div>

@@ -32,8 +32,8 @@ function UserRecipeEditForm({ user, recipe }) {
 
     return (
         <div>
-            <form onSubmit={handleSubmit} className="form-container">
-                <h4 className="form-header">Create New Recipe</h4>
+            <form onSubmit={handleSubmit} className="form-container-2">
+                <h4 className="form-header">🥕 Update Recipe 🥕</h4>
                 <label className="form-label">Recipe Title:
                     <input
                         className="form-inputs"
@@ -43,8 +43,8 @@ function UserRecipeEditForm({ user, recipe }) {
                         onChange={e => setTitle(e.target.value)}>
                     </input>
                 </label>
-                <label>
-                    Description
+                <label className="form-label">
+                    Description:
                     <input
                         className="form-inputs"
                         type="text"
@@ -53,30 +53,34 @@ function UserRecipeEditForm({ user, recipe }) {
                         onChange={e => setDescription(e.target.value)}>
                     </input>
                 </label>
-                <label>
-                    Ingredients
-                    <input
+                <label className="form-label">
+                    Ingredients:
+                    <textarea
+                        rows='5'
+                        cols='30'
                         className="form-inputs"
                         type="text"
                         placeholder='Ingredients & Measurements'
                         value={measurementsIngredients}
                         onChange={e => setMeasurementsIngredients(e.target.value)}>
-                    </input>
+                    </textarea>
                 </label>
                 <br></br>
                 <br></br>
-                <label>
-                    Directions
-                    <input
+                <label className="form-label">
+                    Directions:
+                    <textarea
+                        rows='5'
+                        cols='30'
                         className="form-inputs"
                         type="text"
                         placeholder='...'
                         value={directions}
                         onChange={e => setDirections(e.target.value)}>
-                    </input>
+                    </textarea>
                 </label>
-                <label>
-                    Image
+                <label className="form-label">
+                    Image:
                     <input
                         className="form-inputs"
                         type="text"
@@ -85,7 +89,7 @@ function UserRecipeEditForm({ user, recipe }) {
                         onChange={e => setImgUrl(e.target.value)}>
                     </input>
                 </label>
-                <button>Update Recipe!</button>
+                <button className='form-button' >Update Recipe!</button>
             </form>
         </div>
     )

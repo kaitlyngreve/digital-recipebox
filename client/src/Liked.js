@@ -1,10 +1,12 @@
 
-
+import Recipe from "./Recipe";
+import RecipeCard from "./RecipeCard";
 
 function Liked() {
 
     return (
-        <h1>here is the liked stuff</h1>
+        <div>
+        </div>
     )
 }
 

@@ -1,6 +1,7 @@
 class Recipe < ApplicationRecord
     belongs_to :cuisine, optional: true
     belongs_to :user, optional: true
+    has_many :likes, dependent: :destroy
 
     validates :title, presence: true, uniqueness: true
     validates :description, presence: true, length: { minimum: 20 }

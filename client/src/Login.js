@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
-function Login({ setIsAuthenticated, handleUpdateUser }) {
+function Login({ setUser }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
@@ -23,13 +23,12 @@ function Login({ setIsAuthenticated, handleUpdateUser }) {
             body: JSON.stringify(user),
         })
             .then(res => {
-                if (res) {
+                if (res.ok) {
                     res.json()
                         .then(user => {
-                            handleUpdateUser(user)
-                            setIsAuthenticated(true)
+                            setUser(user)
                         })
-                        .then(history.push("/homepage"))
+                        .then(<Redirect to='/' />)
 
                 } else {
                     res.json()
@@ -67,7 +66,7 @@ function Login({ setIsAuthenticated, handleUpdateUser }) {
                     />
                     <div className='login-page-button-container'>
                         <button className='login-page-button' type="submit">Login</button>
-                        <button type="login-button" className='login-page-button' onClick={handleGoToSignUp}>Click Here to Signup</button>
+                        <button type="login-button" className='login-page-button'>Click Here to Signup</button>
                     </div>
                     {error ? <div>{error}</div> : null}
                 </form>

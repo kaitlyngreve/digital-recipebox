@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
-function Signup({ handleUpdateUser, setIsAuthenticated, setError }) {
+function Signup({ setUser, setIsAuthenticated, setError }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -22,9 +22,9 @@ function Signup({ handleUpdateUser, setIsAuthenticated, setError }) {
             .then(res => {
                 if (res) {
                     res.json()
-                        .then(history.push("/homepage"))
+                        .then(<Redirect to='/' />)
                         .then(user => {
-                            handleUpdateUser(user)
+                            setUser(user)
                             setIsAuthenticated(true)
                         })
 
