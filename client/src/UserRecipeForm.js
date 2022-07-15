@@ -60,9 +60,9 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines, handleAddRecipe }
 
 
     return (
-        <div>
+        <div className="section-card section-contained">
             <form onSubmit={handleSubmit} className="form-container">
-                <h4 className="form-header">🥕 Create New Recipe 🥕</h4>
+                <h1 className="form-header">🥕 Create New Recipe 🥕</h1>
                 <label className="form-label">Recipe Title:
                     <input
                         className="form-inputs"
@@ -128,7 +128,7 @@ function UserRecipeForm({ handleNewUserRecipe, user, cuisines, handleAddRecipe }
                         onChange={e => setImgUrl(e.target.value)}>
                     </input>
                 </label>
-                <button className='form-button' onClick={handleUpdateErrors}>Add Recipe to Box</button>
+                <button className='button' onClick={handleUpdateErrors}>Add Recipe to Box</button>
             </form>
             {recipePostError && <div className='error-message'>{recipePostError.join(", ")}</div>}
         </div>

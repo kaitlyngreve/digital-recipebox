@@ -2,11 +2,12 @@ Rails.application.routes.draw do
   resources :likes, only: [:index, :create]
   resources :cuisines, only: [:index, :show, :create]
   resources :recipes
-  # resources :users, only: [:index, :create, :destroy]
+  resources :users
 
   post '/signup', to: 'users#create'
   get '/me', to: 'users#show'
   get '/users', to: 'users#index'
+  # patch '/users/:id', to: 'users#update'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 

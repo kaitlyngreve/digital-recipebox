@@ -5,9 +5,10 @@ import Recipe from './Recipe';
 import Header from './Header'
 import UserRecipe from './UserRecipe';
 import UserRecipeDetail from './UserRecipeDetail'
-import Liked from './Liked'
+import Profile from './Profile'
 import LandingPage from './LandingPage';
-import Login from './Login'
+import EditProfile from './EditProfile';
+
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -16,6 +17,7 @@ function App() {
   const [user, setUser] = useState(null)
   const [searchRecipes, setSearchRecipes] = useState("")
   const [users, setUsers] = useState([])
+  const [likes, setLikes] = useState([])
 
   useEffect(() => {
     fetch('/me')
@@ -28,18 +30,24 @@ function App() {
             });
         }
       });
-  }, []);
+  }, [users]);
 
   useEffect(() => {
     fetch("/cuisines")
       .then((r) => r.json())
       .then((data) => setCuisines(data));
-  }, [user]);
+  }, []);
 
   useEffect(() => {
     fetch("/recipes")
       .then((r) => r.json())
       .then((data) => setRecipes(data));
+  }, [])
+
+  useEffect(() => {
+    fetch("/users")
+      .then((r) => r.json())
+      .then((data) => setUsers(data));
   }, [])
 
   if (!user) {
@@ -50,6 +58,17 @@ function App() {
     setRecipes([...recipes, data])
   }
 
+  const handleUpdatedRecipe = (data) => {
+    let updatedRecipes = recipes.filter(recipe => recipe.id !== data.id)
+    updatedRecipes.push(data)
+    setRecipes(updatedRecipes)
+  }
+
+  const handleEditUser = (data) => {
+    let editedUsers = users.filter(user => user.id !== data.id)
+    editedUsers.push(data)
+    setUsers(editedUsers)
+  }
 
   const handleDeleteUserRecipe = (resp) => {
     console.log(resp)
@@ -73,29 +92,36 @@ function App() {
             <Header user={user} setUser={setUser} />
             <UserRecipe
               handleDeleteUserRecipe={handleDeleteUserRecipe}
-              recipes={recipes}
+              recipes={recipesToDisplay}
               user={user}
               handleNewUserRecipe={handleNewUserRecipe}
-              cuisines={cuisines} />
+              cuisines={cuisines}
+              handleSearchRecipes={handleSearchRecipes}
+              searchRecipes={searchRecipes}
+            />
           </Route>
           <Route exact path="/">
             <Header user={user} setUser={setUser} />
             <Recipe
-              recipes={recipesToDisplay}
+              recipes={recipes}
               arrayOfUsers={users}
               user={user} cuisines={cuisines}
-              handleSearchRecipes={handleSearchRecipes}
               searchRecipes={searchRecipes} />
           </Route>
           <Route path="/recipes/:id">
             <Header user={user} setUser={setUser} />
             <UserRecipeDetail
               recipes={recipes}
-              user={user} />
+              user={user}
+              handleUpdatedRecipe={handleUpdatedRecipe} />
           </Route>
-          <Route path='/likes'>
+          <Route path='/profile'>
             <Header user={user} setUser={setUser} />
-            <Liked user={user} />
+            <Profile setUser={setUser} user={user} recipes={recipes} likes={likes} setLikes={setLikes} />
+          </Route>
+          <Route path='/editprofile'>
+            <Header user={user} setUser={setUser} />
+            <EditProfile handleEditUser={handleEditUser} user={user} />
           </Route>
         </Switch>
       </div>

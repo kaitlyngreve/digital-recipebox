@@ -1,8 +1,9 @@
 5.times do
     username = Faker::Internet.username(specifier: 8..12)
     # password = Faker::Internet.password(min_length: 6, max_length: 12)
+    img = Faker::Avatar.image
     bio = Faker::Hipster.sentence(word_count: 6)
-    User.create(username: username, password: "password", bio: bio)
+    User.create(username: username, password: "password", bio: bio, img: img)
 end
 
 puts "Done seeding users 🥳"

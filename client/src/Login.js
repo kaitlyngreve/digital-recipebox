@@ -66,7 +66,7 @@ function Login({ setUser }) {
                     />
                     <div className='login-page-button-container'>
                         <button className='login-page-button' type="submit">Login</button>
-                        <button type="login-button" className='login-page-button'>Click Here to Signup</button>
+                        {/* <button type="login-button" className='login-page-button'>Click Here to Signup</button> */}
                     </div>
                     {error ? <div>{error}</div> : null}
                 </form>

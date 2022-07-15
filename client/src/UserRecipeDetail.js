@@ -3,7 +3,7 @@ import { useState } from 'react'
 import UserRecipeEditForm from './UserRecipeEditForm';
 
 
-function UserRecipeDetail({ recipes, user }) {
+function UserRecipeDetail({ recipes, user, handleUpdatedRecipe }) {
     const { id } = useParams();
     const [isEdit, setIsEdit] = useState(false)
     const [isClicked, setIsCliked] = useState(false)
@@ -21,20 +21,21 @@ function UserRecipeDetail({ recipes, user }) {
     }
 
     return (
-        <div>
-            <button className='form-button' onClick={handleGoBack} > 🔙 </button>
-            <div className='recipe-card-container-2'>
-                <h1 className='recipe-header'>{userRecipeDetails[0].title}</h1>
-                <p>{userRecipeDetails[0].description}</p>
+        <div className=' section-contained '>
+            <button className='form-button button' onClick={handleGoBack} >Back ←</button>
+            <div className='section-card padding-none text-align-left'>
                 <img className='user-recipe-img' src={userRecipeDetails[0].img_url} />
-                <div className='recipe-detail-container'>
+                <div className='padding-50px'>
+                    <h1 className='recipe-header'>{userRecipeDetails[0].title}</h1>
+                    <p className='recipe-description'>{userRecipeDetails[0].description}</p>
+                    <hr />
                     <p className='recipe-detail-header'>Ingredients:</p>
                     <p className='recipe-details'>{userRecipeDetails[0].measurements_ingredients}</p>
                     <p className='recipe-detail-header'>Directions:</p>
                     <p className='recipe-details'>{userRecipeDetails[0].directions}</p>
+                    <button className='form-button button' onClick={handleUpdateClick}>{isClicked ? "Back ←" : "Update Recipe"}</button>
+                    {isEdit ? <UserRecipeEditForm user={user} recipe={userRecipeDetails[0]} handleUpdatedRecipe={handleUpdatedRecipe} /> : null}
                 </div>
-                <button className='form-button' onClick={handleUpdateClick}>{isClicked ? "🔙" : "Update"}</button>
-                {isEdit ? <UserRecipeEditForm user={user} recipe={userRecipeDetails[0]} /> : null}
             </div>
         </div >
     )

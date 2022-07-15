@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function UserRecipeEditForm({ user, recipe }) {
+function UserRecipeEditForm({ user, recipe, handleUpdatedRecipe }) {
     const [title, setTitle] = useState(recipe.title)
     const [description, setDescription] = useState(recipe.description)
     const [measurementsIngredients, setMeasurementsIngredients] = useState(recipe.measurements_ingredients)
@@ -26,14 +26,14 @@ function UserRecipeEditForm({ user, recipe }) {
             })
         })
             .then(r => r.json())
-            .then(data => console.log(data))
+            .then(data => handleUpdatedRecipe(data))
     }
 
 
     return (
         <div>
-            <form onSubmit={handleSubmit} className="form-container-2">
-                <h4 className="form-header">🥕 Update Recipe 🥕</h4>
+            <form onSubmit={handleSubmit}>
+                <h1>🥕 Update Recipe 🥕</h1>
                 <label className="form-label">Recipe Title:
                     <input
                         className="form-inputs"
@@ -89,7 +89,7 @@ function UserRecipeEditForm({ user, recipe }) {
                         onChange={e => setImgUrl(e.target.value)}>
                     </input>
                 </label>
-                <button className='form-button' >Update Recipe!</button>
+                <button className='form-button button' >Update Recipe!</button>
             </form>
         </div>
     )
